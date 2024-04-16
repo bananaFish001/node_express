@@ -1,9 +1,26 @@
-// importing a module from fs
-const { readFileSync, writeFileSync } = require("fs")
+const { readFile, writeFile, read, write } = require('fs')
 
-const first = readFileSync('./content/first.txt', 'utf-8')
-const second = readFileSync('./content/second.txt', 'utf-8')
+readFile('./content/first.txt', 'utf8', (err, result) => {
+    if (err) {
+        console.log(err)
+        return
+    }
+    const first = result
 
-console.log(first, second)
+    readFile('./content/second.txt', 'utf8', (err, result) => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        const second = result
 
-writeFileSync('./content/result-sync.txt', `Here is the result : ${first}, ${second}`, { flag: 'a' })
+        writeFile('./content/result-async.txt', `Here is the result : ${first}, ${second}`,
+            { flag: 'a' }, (err, result) => {
+                if (err) {
+                    console.log(err)
+                    return;
+                }
+                console.log(result)
+            }
+  })
+})
