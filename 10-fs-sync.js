@@ -10,4 +10,5 @@ writeFileSync('./content/result-sync.txt',
     `Here is the result : ${first}, ${second}`,
     { flag: 'a' } // flag is added to make sure new content is appended instead of being overwrittern
 )
-console.log('done')
+console.log('done with this task ')
+console.log('starting the next task')
