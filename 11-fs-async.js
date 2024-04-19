@@ -19,6 +19,6 @@ readFile('./content/first.txt', 'utf8', (err, first) => {
             }
 
             console.log('Result has been written to result-async.txt');
-        });
+        }); 
     });
 });
